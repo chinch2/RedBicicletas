@@ -15,3 +15,9 @@ exports.Bicicletas_create_post = function(req, res) {
 
   res.redirect("/bicicletas");
 };
+
+exports.Bicicleta_delete_post = function(req, res) {
+  Bicicleta.removeById(req.body.id);
+
+  res.redirect("/bicicletas");
+};
