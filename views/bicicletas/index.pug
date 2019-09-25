@@ -10,6 +10,7 @@ block content
                 th(scope='col') Modelo
                 th(scope='col') Ubicacion
                 th(scope='col')
+                th(scope='col')
     tbody
         each bici in bicis
             tr
@@ -19,7 +20,9 @@ block content
             td= bici.modelo
             td= bici.ubicacion
             td
-                form.inline(method='post' action='bicicletas/' + bici.id + '/delete')
+                a(href= `bicicletas/${bici.id}/update`) Editar
+            td
+                form.inline(method='post' action=`bicicletas/${bici.id}/delete`)
                     input(type='hidden' name='id' value=bici.id)
                     button.link-button(type='submit' name='submit_param' value='submit_value' class='btn')
                         = 'Eliminar'
