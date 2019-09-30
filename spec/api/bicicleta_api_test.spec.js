@@ -39,3 +39,6 @@ describe("POST BICICLETAS /create", () => {
     );
   });
 });
+beforeEach(function() {
+  console.log("testeando...");
+});
