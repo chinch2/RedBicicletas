@@ -16,7 +16,11 @@ exports.bicicleta_list = function(req, res) {
 //   });
 // };
 exports.bicicleta_create = function(req, res) {
-  var bici = new Bicicleta(req.body.id, req.body.color, req.body.modelo);
+  var bici = new Bicicleta({
+    id: req.body.id,
+    color: req.body.color,
+    modelo: req.body.modelo
+  });
   bici.ubicacion = [req.body.lat, req.body.lng];
 
   Bicicleta.add(bici);
