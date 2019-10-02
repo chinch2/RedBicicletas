@@ -6,7 +6,8 @@ describe("Testing Bicicletas", function() {
     var mongoDB = "mongodb://localhost/testdb";
     mongoose.connect(mongoDB, {
       useUnifiedTopology: true,
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useCreateIndex: true
     });
     const db = mongoose.connection;
     db.on("error", console.error.bind(console, "connection error"));

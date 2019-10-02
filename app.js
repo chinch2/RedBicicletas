@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bicicletaRouter = require("./routes/bicicletas");
 var bicicletaAPIRouter = require("./routes/api/bicicletas");
+var usuariosAPIRouter = require("./routes/api/usuarios");
 
 var app = express();
 
@@ -22,7 +23,9 @@ mongoose.connect(mongoDB, {
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error: "));
-
+db.once("open", function() {
+  console.log("We are connected to database!");
+});
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -37,6 +40,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/bicicletas", bicicletaRouter);
 app.use("/api/bicicletas", bicicletaAPIRouter);
+app.use("/api/usuarios", usuariosAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
