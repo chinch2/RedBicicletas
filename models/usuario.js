@@ -65,4 +65,6 @@ usuarioSchema.methods.reservar = function(biciId, desde, hasta, cb) {
   reserva.save(cb);
 };
 
+usuarioSchema.methods.enviar_email_bienvenida = function(cb) {};
+
 module.exports = mongoose.model("Usuario", usuarioSchema);
