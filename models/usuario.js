@@ -81,7 +81,7 @@ usuarioSchema.methods.enviar_email_bienvenida = function(cb) {
     }
 
     const mailOptions = {
-      from: "no-reply@redbicicletas.com",
+      from: "no-reply@redbicicletas.com", //"Bicicletas El Arguellito <biciargu@gmail.com>"
       to: email_destination,
       subject: "Verificacion de cuenta",
       text:
@@ -98,7 +98,7 @@ usuarioSchema.methods.enviar_email_bienvenida = function(cb) {
         return console.log(err.message);
       }
       console.log(
-        "Un email de verificacion ha sido enviado a" + email_destination + "."
+        "Un email de verificacion ha sido enviado a " + email_destination + "."
       );
     });
   });
