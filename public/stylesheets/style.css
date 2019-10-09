@@ -5,3 +5,8 @@ a {
 #mapid {
   height: 600px;
 }
+
+body {
+  padding: 50px;
+  padding-top: 5rem;
+}
