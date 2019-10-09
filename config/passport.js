@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const Usuario = require("../models/usuario");
 
-const Users = mongoose.model('Usuarios');
+passport.use(new LocalStrategy());
 
-passport.use(new LocalStrategy({
-  usernameField: 'user[email]',
-  passwordField: 'user[password]',
-}, (email, password, done) => {
-  Users.findOne({ email })
-    .then((user) => {
-      if(!user || !user.validatePassword(password)) {
-        return done(null, false, { errors: { 'email or password': 'is invalid' } });
-      }
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
 
-      return done(null, user);
-    }).catch(done);
-}));
+passport.deserializeUser(function(id, cb) {
+  Usuario.findById(id, function(err, usuario) {
+    cb(err, usuario);
+  });
+});
+
+module.exports = passport;
