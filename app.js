@@ -167,7 +167,7 @@ function loggedIn(req, res, next) {
   if (req.user) {
     next();
   } else {
-    console.log("user sin loguearse");
+    console.log("Usuario sin loguearse");
     res.redirect("/login");
   }
 }

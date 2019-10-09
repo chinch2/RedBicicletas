@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-ObjectId = Schema.ObjectId;
 
 var bicicletaSchema = new Schema({
+  code: Number,
   color: String,
   modelo: String,
   ubicacion: {
@@ -11,8 +11,14 @@ var bicicletaSchema = new Schema({
   }
 });
 
-bicicletaSchema.statics.createInstance = function(color, modelo, ubicacion) {
+bicicletaSchema.statics.createInstance = function(
+  code,
+  color,
+  modelo,
+  ubicacion
+) {
   return new this({
+    code: code,
     color: color,
     modelo: modelo,
     ubicacion: ubicacion
@@ -20,7 +26,7 @@ bicicletaSchema.statics.createInstance = function(color, modelo, ubicacion) {
 };
 
 bicicletaSchema.methods.toString = function() {
-  return " | color: " + this.color + " | modelo: " + this.modelo;
+  return " code: " + this.code + " | color: " + this.color;
 };
 
 bicicletaSchema.statics.allBicis = function(cb) {
@@ -28,15 +34,15 @@ bicicletaSchema.statics.allBicis = function(cb) {
 };
 
 bicicletaSchema.statics.add = function(aBici, cb) {
-  this.createInstance(aBici, cb);
+  this.create(aBici, cb);
 };
 
-bicicletaSchema.statics.findByCode = function(aCode, cb) {
-  return this.findOne({ code: aCode }, cb);
+bicicletaSchema.statics.findById = function(aCode, cb) {
+  return this.findOne({ id: aCode }, cb);
 };
 
-bicicletaSchema.statics.removeByCode = function(aCode, cb) {
-  return this.deleteOne({ code: aCode }, cb);
+bicicletaSchema.statics.removeById = function(aCode, cb) {
+  return this.deleteOne({ id: aCode }, cb);
 };
 
 module.exports = mongoose.model("Bicicleta", bicicletaSchema);
