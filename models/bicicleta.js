@@ -11,32 +11,38 @@ var bicicletaSchema = new Schema({
   }
 });
 
-bicicletaSchema.statics.createInstance = function(color, modelo, ubicacion) {
-  return new this({
-    color: color,
-    modelo: modelo,
-    ubicacion: ubicacion
-  });
-};
+//------Sin Persistencia con DB (con un arreglo se hacia esto)---------
 
-bicicletaSchema.methods.toString = function() {
-  return " id: " + this.id + " | color: " + this.color;
-};
+// bicicletaSchema.statics.createInstance = function(
+//   color,
+//   modelo,
+//   ubicacion
+// ) {
+//   return new this({
+//     color: color,
+//     modelo: modelo,
+//     ubicacion: ubicacion
+//   });
+// };
 
-bicicletaSchema.statics.allBicis = function(cb) {
-  return this.find({}, cb);
-};
+// bicicletaSchema.methods.toString = function() {
+//   return " id: " + this.id + " | color: " + this.color;
+// };
 
-bicicletaSchema.statics.add = function(bici, cb) {
-  this.create(bici, cb);
-};
+// bicicletaSchema.statics.allBicis = function(cb) {
+//   return this.find({}, cb);
+// };
 
-bicicletaSchema.statics.findByCode = function(code, cb) {
-  return this.findOne({ code: code }, cb);
-};
+// bicicletaSchema.statics.add = function(bici, cb) {
+//   this.create(bici, cb);
+// };
 
-bicicletaSchema.statics.removeByCode = function(code, cb) {
-  return this.deleteOne(code, cb);
-};
+// bicicletaSchema.statics.findByCode = function(code, cb) {
+//   return this.findOne({ code: code }, cb);
+// };
+
+// bicicletaSchema.statics.removeByCode = function(code, cb) {
+//   return this.deleteOne(code, cb);
+// };
 
 module.exports = mongoose.model("Bicicleta", bicicletaSchema);
