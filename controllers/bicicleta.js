@@ -11,10 +11,27 @@ exports.Bicicletas_create_get = function(req, res, next) {
 };
 
 exports.Bicicletas_create_post = function(req, res) {
-  var bici = new Bicicleta(req.body.id, req.body.color, req.body.modelo);
-  bici.ubicacion = [req.body.lat, req.body.lng];
-  Bicicleta.create(bici);
-  res.redirect("/bicicletas");
+  Bicicleta.create(
+    {
+      color: req.body.color,
+      modelo: req.body.modelo,
+      ubicacion: [req.body.lat, req.body.lng]
+    },
+    function(err, nuevaBici) {
+      if (err) {
+        res.render("bicicletas/create", {
+          errors: err.errors,
+          bici: new Bicicleta({
+            color: req.body.color,
+            modelo: req.body.modelo,
+            ubicacion: [req.body.lat, req.body.lng]
+          })
+        });
+      } else {
+        res.redirect("/bicicletas");
+      }
+    }
+  );
 };
 
 exports.Bicicletas_update_get = function(req, res, next) {
@@ -24,13 +41,30 @@ exports.Bicicletas_update_get = function(req, res, next) {
 };
 
 exports.Bicicletas_update_post = function(req, res) {
-  var bici = Bicicleta.findByCode(req.params.id);
-  bici.id = req.body.id;
-  bici.color = req.body.color;
-  bici.modelo = req.body.modelo;
-  bici.ubicacion = [req.body.lat, req.body.lng];
-
-  res.redirect("/bicicletas");
+  var update_values = {
+    color: req.body.color,
+    modelo: req.body.modelo,
+    ubicacion: [req.body.lat, req.body.lng]
+  };
+  Bicicleta.findByIdAndUpdate(req.params.id, update_values, function(
+    err,
+    bici
+  ) {
+    if (err) {
+      console.log(err);
+      res.render("bicicletas/update", {
+        errors: err.errors,
+        bicicleta: new Bicicleta({
+          color: req.body.color,
+          modelo: req.body.modelo,
+          ubicacion: [req.body.lat, req.body.lng]
+        })
+      });
+    } else {
+      res.redirect("/bicicletas");
+      return;
+    }
+  });
 };
 
 exports.Bicicleta_delete_post = function(req, res, next) {

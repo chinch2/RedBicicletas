@@ -11,11 +11,7 @@ var bicicletaSchema = new Schema({
   }
 });
 
-bicicletaSchema.statics.createInstance = function(
-  color,
-  modelo,
-  ubicacion
-) {
+bicicletaSchema.statics.createInstance = function(color, modelo, ubicacion) {
   return new this({
     color: color,
     modelo: modelo,
