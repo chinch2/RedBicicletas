@@ -85,9 +85,9 @@ usuarioSchema.methods.enviar_email_bienvenida = function(cb) {
       to: email_destination,
       subject: "Verificacion de cuenta",
       text:
-        "Hola guapa, \n\n" +
+        "Hola, \n\n" +
         "Por favor, para verificar su cuenta haga click en este link: \n" +
-        "https://redbicis.herokuapp.com" +
+        EMAIL_DOMAIN +
         "/token/confirmation/" +
         token.token +
         ".\n"
