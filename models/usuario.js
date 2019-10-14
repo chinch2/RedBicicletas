@@ -87,7 +87,7 @@ usuarioSchema.methods.enviar_email_bienvenida = function(cb) {
       text:
         "Hola, \n\n" +
         "Por favor, para verificar su cuenta haga click en este link: \n" +
-        "http://localhost:3000" +
+        "https://redbicis.herokuapp.com" +
         "/token/confirmation/" +
         token.token +
         ".\n"
