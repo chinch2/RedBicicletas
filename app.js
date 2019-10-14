@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -40,8 +41,7 @@ var mongoose = require("mongoose");
 // Si estoy en el ambiente de desarrollo usar
 // var mongoDB = "mongodb://localhost/red_bicicletas";
 // sino usar
-var mongoDB =
-  "mongodb+srv://admin:B0K23B4GtMUsKgBl@redbicis-p4k0c.mongodb.net/test?retryWrites=true&w=majority";
+var mongoDB = process.env.MONGO_URI;
 
 mongoose.connect(mongoDB, {
   useUnifiedTopology: true,
