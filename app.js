@@ -36,7 +36,13 @@ app.use(
 
 var mongoose = require("mongoose");
 
-var mongoDB = "mongodb://localhost/red_bicicletas";
+// mongodb+srv://admin:B0K23B4GtMUsKgBl@redbicis-p4k0c.mongodb.net/test?retryWrites=true&w=majority
+// Si estoy en el ambiente de desarrollo usar
+// var mongoDB = "mongodb://localhost/red_bicicletas";
+// sino usar
+var mongoDB =
+  "mongodb+srv://admin:B0K23B4GtMUsKgBl@redbicis-p4k0c.mongodb.net/test?retryWrites=true&w=majority";
+
 mongoose.connect(mongoDB, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
