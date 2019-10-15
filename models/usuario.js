@@ -143,4 +143,9 @@ usuarioSchema.methods.resetPassword = function(cb) {
   });
 };
 
+usuarioSchema.statics.findOneOrCreateByGoogle = function findOneOrCreate(
+  condition,
+  callback
+) {};
+
 module.exports = mongoose.model("Usuario", usuarioSchema);
