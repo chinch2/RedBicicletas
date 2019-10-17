@@ -186,7 +186,7 @@ app.post("/resetPassword", function (req, res) {
 });
 
 app.use("/", indexRouter);
-app.use("/usuarios", usuariosRouter);
+app.use("/usuarios", loggedIn, usuariosRouter);
 app.use("/token", tokenRouter);
 
 app.use("/bicicletas", loggedIn, bicicletaRouter);
