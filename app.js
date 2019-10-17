@@ -193,7 +193,7 @@ app.use("/bicicletas", loggedIn, bicicletaRouter);
 
 app.use("/api/auth", authAPIRouter);
 app.use("/api/bicicletas", validarUsuario, bicicletaAPIRouter);
-app.use("/api/usuarios", usuariosAPIRouter);
+app.use("/api/usuarios", validarUsuario, usuariosAPIRouter);
 
 app.use("/privacy_policy", function (req, res) {
   res.sendFile("public/privacy_policy.html");
