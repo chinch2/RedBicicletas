@@ -27,9 +27,9 @@ var usuarioSchema = new Schema({
     trim: true,
     require: [true, "El email es obligatorio"],
     lowercase: true,
-    unique: true,
-    validate: [validateEmail, "Por favor ingrese un email valido"],
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+    unique: true
+    //validate: [validateEmail, "Por favor ingrese un email valido"],
+    //match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
   },
   password: {
     type: String,
