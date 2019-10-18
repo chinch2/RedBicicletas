@@ -24,6 +24,7 @@
     "nodemailer": "^6.3.0",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "passport": "^0.4.0",
+    "passport-facebook-token": "^3.3.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11",
